@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-cn" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>登录</title>
+    <link rel="stylesheet" type="text/css" href="css/login.css" th:href="@{/css/login.css}">
+	<link rel="stylesheet" th:href="@{/css/style.css}" href="css/style.css">
+
+	<style>
+
+		.fl {
+			float: left;
+
+		}
+
+		.why_select {
+			overflow: hidden;
+			margin: 0 auto;
+			border-bottom: solid 1px #666;
+			padding: 10px 85px;
+			font-family: '微软雅黑';
+		}
+		.why_select dl {
+			float: left;
+			margin-bottom: 0;
+		}
+
+		.why_select dd {
+			margin: 4px 100px 0 60px;
+		}
+
+		.why_select h1 {
+			font-size: 16px;
+			color: #fff;
+			font-weight: bold;
+			margin: 0;
+		}
+
+		.why_select h1.title {
+			line-height: 50px;
+			padding-right: 25px;
+		}
+
+		.why_select h2 {
+			font-size: 12px;
+			color: #8d8d8e;
+			line-height: 26px;
+		}
+
+		.why_select .icon {
+			width: 50px;
+			height: 50px;
+		}
+		.company {
+			width: 100%;
+			height: 38px;
+			line-height: 38px;
+			background: #ffc900;
+			color: #3d3d3f;
+			text-align: center;
+			font-size: 12px;
+		}
+		#footer {
+			width: 100%;
+			background: #3d3d3f;
+		}
+	</style>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="/webjars/jquery/3.4.1/jquery.min.js" th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="/webjars/bootstrap/3.4.1/css/bootstrap.css" th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+	<!--导入布局js，共享header和footer-->
+
+	<script>
+
+
+		$(function () {
+            //1.给登录按钮绑定单击事件
+			$("#btn_sub").click(function () {
+                //2.发送ajax请求，提交表单数据
+
+				$.post("/page/login",$("#loginForm").serialize(),function (data) {
+					//data : {flag:false,errorMsg:''}
+					if(data.flag){
+					    //登录成功;
+						location.href="index";
+					}else{
+					    //登录失败
+						$("#errorMsg").html(data.errorMsg);
+					}
+                });
+            });
+        });
+
+
+		//3.处理响应结果
+
+
+
+	</script>
+
+</head>
+
+<body th:background="@{/img/bj.jpg}"
+	   style=" background-repeat:no-repeat ;
+background-size:100% 100%;
+background-attachment: fixed;">
+
+<section id="login_wrap">
+	<div class="fullscreen-bg" style="height: 532px;">
+
+	</div>
+	<div class="login-box">
+		<div class="title">
+			<span>欢迎登录家乡旅游网</span>
+		</div>
+		<div class="login_inner">
+
+			<!--登录错误提示消息-->
+			<div id="errorMsg" class="alert alert-danger" STYLE="text-align: center;color: red"></div>
+			<form id="loginForm" action="" method="post" accept-charset="utf-8">
+				<input type="hidden" name="action" value="login"/>
+				<input name="username" type="text" placeholder="请输入账号" autocomplete="off">
+				<input name="password" type="text" placeholder="请输入密码" autocomplete="off">
+				<div class="verify">
+					<input name="check" type="text" placeholder="请输入验证码" autocomplete="off" STYLE="width: 130px">
+					<span><img th:src="@{/page/checkCode}" src="/page/checkCode" alt="" onclick="changeCheckCode(this)"></span>
+					<script type="text/javascript">
+						//图片点击事件
+						function changeCheckCode(img) {
+							img.src="/page/checkCode?"+new Date().getTime();
+						}
+					</script>
+				</div>
+				<div class="submit_btn">
+					<button type="button"  id="btn_sub">登录</button>
+				</div>
+			</form>
+			<div class="reg">没有账户？<a th:href="@{/page/registerPage}" href="javascript:;">立即注册</a></div>
+		</div>
+	</div>
+</section>
+<footer id="footer">
+	<div class="top sm-hidden">
+		<div class="block left">
+			<h2>合作伙伴</h2>
+			<hr>
+			<ul class="ul">
+				<li>途牛旅游网</li>
+				<li>驴妈妈旅游网</li>
+				<li>携程旅游</li>
+				<li>中国青年旅社</li>
+			</ul>
+		</div>
+
+		<div class="block center">
+			<h2>旅游FAQ</h2>
+			<hr>
+			<ul class="ul">
+				<li>旅游合同签订方式？</li>
+				<li>儿童价是基于什么制定的？</li>
+				<li>旅游的线路品质是怎么界定的？</li>
+				<li>旅游保险有些什么种类？</li>
+			</ul>
+		</div>
+		<div class="block right">
+			<h2>联系方式</h2>
+			<hr>
+			<ul class="ul">
+				<li>微博：weibo.com/maodo</li>
+				<li>邮件：sh@maodou.com</li>
+				<li>地址：西安市雁塔区123号</li>
+			</ul>
+		</div>
+	</div>
+	<div class="chearfix"></div>
+	<div class="version sm-visible">
+		客户端 | 触屏版 | 电脑版
+	</div>
+	<div class="bottom">Copyright © SHMD 山河旅行社| 陕ICP 备120110119 号<span class="sm-hidden">| 旅行社经营许可证：L-SH-BK12345</span></div>
+</footer>
+
+
+</body>
+
+</html>

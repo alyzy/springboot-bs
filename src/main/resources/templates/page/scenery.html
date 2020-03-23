@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-cn" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>山河旅行社</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="css/style.css">
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"  ></script>
+</head>
+<script>
+    $(function () {
+
+
+
+        alert(attr)
+        $(".btn2").click(function () {
+            var val = $(this).attr("name");
+                        location.href="particulars?routeId="+val;
+        });
+        $(".btn1").click(function () {
+            //拿到某个属性中的内容，适用与遍历
+            var val = $(this).attr("name");
+            location.href='/pay?routeId='+val;
+        });
+
+    })
+    $("#login").ready(function () {
+        $.post("/page/session",function (data) {
+            if(data.msg){
+
+            }else {
+
+                $("#login").hide();}
+        });
+    });
+</script>
+
+<body>
+<header id="header">
+
+    <div class="center">
+        <div  style="float: right;padding-top: 20px;padding-left: 50px">
+
+            <input th:id="login" type="submit" th:value='登陆'  id="login">
+            <input type="submit" th:value='个人中心'  id="center">
+        </div>
+
+        <h1 class="logo">山河旅行社</h1>
+        <nav class="link" >
+            <h2 style="display:none;">网站导航</h2>
+            <ul>
+                <li><a th:href="@{/page/index}" href="index.html">首页</a></li>
+                <li><a th:href="@{/page/information}" href="information.html"><span class="xs-hidden">旅游</span>资讯</a></li>
+                <li><a th:href="@{/page/ticket}"><span class="xs-hidden">酒店查询</span></a></li>
+                <li><a th:href="@{/page/xsHidden}" href="scenery.html">美食小吃</a></li>
+                <li><a th:href="@{/page/about}"><span class="xs-hidden"></span>留言板</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+<div id="headline">
+    <img src="img/headline.jpg" alt="">
+    <hgroup>
+        <h2>美食小吃</h2>
+        <h3>介绍本地美食小吃</h3>
+    </hgroup>
+</div>
+
+<div id="container">
+
+    <div class="list information">
+        <h2 style="margin:0 0 20px 0">美食小吃 </h2>
+        <h3 class="xs-hidden" id="user"></h3>
+        <figure class="tour" th:each="map:${map}" >
+            <img th:src="@{${map.key}}" src="img/tour1.png">
+            <figcaption>
+                <article>
+                    <header>
+                        <hgroup>
+                            <h2>[[${map.value.xname}]]</h2>
+                            <h3 class="xs-hidden">[[${map.value.hotPlace}]]</h3>
+
+                        </hgroup>
+                    </header>
+                    <ol class="md-hidden">
+                        <li><mark>健康食品</mark>：吃的放心，吃的舒心</li>
+
+                    </ol>
+                    <div class="buy">
+                        <div class="price">￥<strong>[[${map.value.price}]]</strong></div>
+                        <div  class="reserve md-hidden"><button class="btn1" style="width: 100px;height: 40px;background-color: orange;margin-left: 30px;" th:name="${map.value.xid}">立即抢购</button></div>
+                        <div  class="reserve md-hidden"><button class="btn2" style="width: 100px;height: 40px;background-color: orange;margin-left: 30px;" th:name="${map.value.xid}">查看详情</button></div>
+
+                    </div>
+                    <div class="type">美食小吃</div>
+                    <div class="disc xq-hidden"><span></span></div>
+                    <footer class="md-hidden">本团游由山河旅行社赞助提供，截止于<time>2016-10-10</time></footer>
+                </article>
+            </figcaption>
+        </figure>
+
+        <div class="more">加载更多...</div>
+    </div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}" href="../Css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css//bootstrap-responsive.css}" href="../Css/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/sty.css}" href="../Css/style.css" />
+
+    <script type="text/javascript" th:src="@{/js/jquery.js}"></script>
+
+
+
+
+    <style type="text/css">
+        body {
+            padding-bottom: 40px;
+        }
+        .sidebar-nav {
+            padding: 9px 0;
+        }
+
+        @media (max-width: 980px) {
+            /* Enable use of floated navbar text */
+            .navbar-text.pull-right {
+                float: none;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+<form class="form-inline definewidth m20" action="" method="get">
+    角色名称：
+    <input type="text" name="roleName" id="roleName" class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
+    <a  class="btn btn-primary" id="checkTravel">查询</a>&nbsp;&nbsp;  <a  class="btn btn-primary" id="addHotel">添加</a>
+
+</form>
+
+<table class="table table-bordered table-hover definewidth m10" >
+    <thead>
+    <tr>
+        <th>线路id</th>
+        <th>tid</th>
+        <th>图片路径</th>
+        <th>线路名称</th>
+        <th>动作</th>
+    </tr>
+    </thead>
+	     <tr th:each="hotel:${hotels}">
+            <td >[[${hotel.hotelId}]]</td>
+            <td>[[${hotel.hotelName}]]</td>
+            <td>[[${hotel.hotelImage}]]</td>
+            <td>[[${hotel.hotelAddr}]]</td>
+             <td>  <a onclick="edit(this)" th:name="${hotel.hotelId}">编辑</a></td>
+        </tr></table>
+		</body>
+		</html>
+
+<script>
+
+    //添加
+    $('#addHotel').click(function(){
+
+        location.href="/main/addHotel";
+    });
+    //高级查询
+    $('#checkTravel').click(function(){
+        var val = $("#roleName").val();
+        location.href="/main/adminHotelList?roleName="+val;;
+    });
+    //编辑
+    function edit(obj) {
+        var routeId = $(obj).attr("name");
+        location.href="/main/editTravel?&routeId="+routeId;
+
+    }
+</script>

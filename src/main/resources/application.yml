@@ -1,0 +1,42 @@
+
+#日志隔离级别
+#logging:
+# level:
+#  cn.xaiu.springdemo1: debug
+
+#数据库配置
+spring:
+ datasource:
+  driver-class-name: com.mysql.cj.jdbc.Driver
+  username: root
+  password: admin
+  url: jdbc:mysql://39.105.25.50:3306/graduation?characterEncoding=utf-8
+ mvc:
+  date-format: yyyy-MM-dd
+ redis:
+  host: 39.105.25.50
+
+server:
+ port: 8081
+
+mybatis:
+ configuration:
+  map-underscore-to-camel-case: true
+#阿里支付参数
+alipay:
+ url: https://openapi.alipaydev.com/gateway.do
+ APP_ID: 2016101900723429
+ APP_PRIVATE_KEY: MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDSaSwIrrSLsuTnIEVTA7EgqCZVUzhh3UHv/P4l8rVCJncD/xMX+1LJPCqoOURcSSB3H1uZqCX1GTjmckqKz4TABSrtrtNFNGebOizJ4D1/QlMx30Hw8vcgJEOXn4agRhAD7cJgNrxALGyEPlc2Z11CtrqeA/VAMRf5xLNtb6h6TkNJzhQf49lq5Gldrvq7WaJzz1xfN/OjWogyz40Wr3nLojuSeabVQ1R8jyhoPts/4T70qPD9fv8rvcFjV+tEYIduxinnmsnzAj48L/09JIfDnBvBcjQq3+X/g2/noQGGvEJ1JbGA3I7m55dGpaQ6XFAUUrPt8CCfHidredS0wuLVAgMBAAECggEADjkJvvSAQ8kt6+mkhf4D5R84qB/d+c+I+33weAQ1+Gi9NsnxMnfMmsm0YHauhkZzKVo3SOWy2yR/UiR7oXJxmMFAq5xbr5vhPP7rtCGyRn3nPcHHpU/nIIcTApbH9OGHh5x0vSg2BWh7VV0ZbBYEmdPcPX4q/9HRuxJuxoD7tHiiYWADjdQZBlCWvl9JIOLldNrGQFwgNxb5iTn5XJsS1ajF7ek+N9Bmnz8GD/c/uJ4bT6L82A3CQx9Xh1iSnSpcqtzz6w+tMs+jx1eJ9whmVo0I+DxfpfUaflwVgpyGEBiaosmu4IgGNEsjqlUnaJsFoiFEInsxDzZoyXlNaDgrgQKBgQD55EoqhA1bwmhOULO6o0QoCs6LQXIRNF1nmfURssWvD7poDCrilMTas+tJuX9XGpOdgiDy1USl75nlUD9OGLjj1hVbaUi9hIh3g+d95PQ0oT6zqgufo+EVE5FfEXH2cjuROqNjefoGJQcIHG0DAF9QO/LplVDbZQrYEzSeo89PEQKBgQDXjdQRfc7t27UF9d1YWuKa5rxyoB7YMVF2HIW7J47ALJ1Nw5xPdZ+BUQoxuWu98PUaleFOE0YeeLl+EmWW8c+FtQdT3ezKEB4XOCY2Ju620jENo0j/4MESmYG72S/QN141XdtRQCiH0HpG9e8F6CLHYLORRDRGIMuJmgcYnz/fhQKBgQDabFT3fJ1Ai1kouxmeFX9JkMigp//QUfkiyUuQwLZSImlI8Pm7O1Yl5AXRVzabKDvG/StXllp+wEPAULhExw809reMQya1oNa3wK/jNvDN3/Myj3vBejkPdx8l/dWjGI5AjwSpusB0BoFy8YXHjdfCBeR5j24xlsw3ufHQiFZ4QQKBgBnpPKLVorhI/tu2kGL8mdzQ+7ozsUF/vDEcgJ7cxHYpZsdgSjvrAb+DxFvx1BfDDVOizLCb9IPZM0MKZxfb/XwvJLBaLwqjIVrdLwq3Z16mqargA/huRgc8WLICC5NV9IcpvyFnOvgIgYpiKddl7jhVUYCW2EnNy2nBEDVPf1gZAoGAUCCmcXSw8UHGestrSnSC7I7biZ9CUuNkHZ36LJyq+m5qboNA992Ind1tShpgx+m8nNiUSMXgigEry0lygDcnU2IA2wy78P/9KFvYTqxY6VHKv4KtExfasvtjEPtc7LPDodL1udTl+XGCoVclxpHSp45s5Dcw73PlH0RH8NIxACI=
+ alipay.FORMAT: json
+ ALIPAY_PUBLIC_KEY: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA2fT1frao4QhiJ/+YxUkQAmJduaf7o9YI609aQ4WYsVQq9BAOfmDR+gk4xjVNZq7Yo+vFDJBZi7GF4FZLPbA2+qxAjDn1R1F5SaxeDYGmu8IGVp1GkbX3pAK1SW6mA7veRArAVCmx6Y8NCxsRagoeJRBxZj7+GH4PFOnxAAraQBZvStL/2snlpMmKsGZ3fxVhy+sdXNlijoJWhwF0ZgBEfF34pa1S2LCBfg1AhayMH1172pghvH8SbXJR+W1Y0w0tp1IE33tli/AhsMS/jx6SyvsJrQoAlRd3FoDiQRmDfLhNJSMHvbls+QagOmaog1YjVC32LWWGWIOGQtAqOpnK8wIDAQAB
+ SIGN_TYPE: RSA2
+ CHARSET: utf-8
+
+
+ #SpringBoot配置mybatis
+ #mybatis.config-location=classpath:mybatis/mybatis-config.xml
+ #mybatis.mapper-locations=classpath:mybatis/mapper/*.xml
+ #mybatis.type-aliases-package=com.chenhaiwei.cqtourpal.entity
+
+
+

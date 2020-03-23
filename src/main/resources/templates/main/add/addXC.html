@@ -1,0 +1,63 @@
+<html lang="zh-cn" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+
+</head>
+<script type="text/javascript" th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"  ></script>
+<link th:href="@{/js/bootstrap.js}">
+<style>
+
+    .form-signin input[name="originalPrice"] {
+        font-size: 16px;
+        height: auto;
+        margin-bottom: 15px;
+        padding: 7px 9px;
+    }
+</style>
+<script>
+
+
+</script>
+<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}" href="../Css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" th:href="@{/css//bootstrap-responsive.css}" href="../Css/bootstrap-responsive.css" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/sty.css}" href="../Css/style.css" />
+<link rel="stylesheet" type="text/css" href="css/index.css" th:href="@{/css/index.css}">
+<script type="text/javascript" th:src="@{/js/jquery.js}"></script>
+
+<body>
+
+
+
+
+<form action="/upload/xc" method="post" enctype="multipart/form-data">
+
+    <div class="register-box" >
+        <div style="text-align: center"> 美食名称:<input maxlength="20" name="xname" style="text-align: center"  type="text" ></div>
+    </div>
+
+    <div class="register-box" >
+        <div style="text-align: center"> 热门商铺:<input maxlength="20" name="hotplace" style="text-align: center"  type="text" ></div>
+    </div>
+    <div class="register-box" >
+        <div style="text-align: center"> 价格:<input maxlength="20" name="price" style="text-align: center"  type="text" ></div>
+    </div>
+
+    <div class="register-box">
+        <div style="text-align: center"> 图片地址: <input type="file" name="file" ></div>
+    </div>
+    <div class="register-box" >
+        <div style="text-align: center"> 图片地址: <input type="file" name="file"  ></div>
+    </div>
+
+    <div class="submit_btn">
+        <button type="submit" id="btn">保存景区</button>
+    </div>
+
+</form>
+
+
+
+
+</body>
+</html>
